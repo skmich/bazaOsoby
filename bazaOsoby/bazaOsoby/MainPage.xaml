@@ -10,7 +10,7 @@
 
         <Button Text="Dodaj kontakt" Clicked="btnDodaj"/>
 
-        <ListView x:Name="ListaKontaktow">
+        <ListView x:Name="ListaKontaktow" RowHeight="200">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Tapped="vcEdit">

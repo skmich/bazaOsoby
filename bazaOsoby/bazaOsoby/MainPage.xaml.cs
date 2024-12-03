@@ -65,12 +65,15 @@ namespace bazaOsoby
 
         private void vcEdit(object sender, EventArgs e)
         {
-            var listItem = sender as MenuItem;
-            var selectedPerson = listItem?.CommandParameter as Person;
-
-            if(selectedPerson != null)
+            var viewCell = sender as ViewCell;
+            if (viewCell != null)
             {
-                Navigation.PushAsync(new EditPage(selectedPerson));
+                var selectedPerson = viewCell.BindingContext as Person;
+
+                if (selectedPerson != null)
+                {
+                    Navigation.PushAsync(new EditPage(selectedPerson));
+                }
             }
         }
     }

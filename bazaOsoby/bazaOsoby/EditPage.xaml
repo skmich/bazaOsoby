@@ -10,7 +10,7 @@
             <Entry x:Name="entryMail" Placeholder="Email"></Entry>
             <Entry x:Name="entryAdres" Placeholder="Adress zamieszkania"></Entry>
 
-            <Button Text="Edytuj" Clicked="Button_Clicked"/>
+            <Button Text="Edytuj" Clicked="btnEdit"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
