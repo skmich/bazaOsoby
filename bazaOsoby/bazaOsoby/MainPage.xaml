@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="bazaOsoby.MainPage">
+             x:Class="bazaOsoby.MainPage"
+             Title="Tytul" NavigationPage.HasNavigationBar="True">
     <StackLayout>
         <Entry x:Name="entryName" Placeholder="Imie"></Entry>
         <Entry x:Name="entrySurname" Placeholder="Nazwisko"></Entry>
@@ -10,7 +11,7 @@
 
         <Button Text="Dodaj kontakt" Clicked="btnDodaj"/>
 
-        <ListView x:Name="ListaKontaktow" RowHeight="200">
+        <ListView x:Name="ListaKontaktow" RowHeight="140">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Tapped="vcEdit">
@@ -21,7 +22,7 @@
                             </StackLayout>
                             <Label Text="{Binding Mail}"/>
                             <Label Text="{Binding Adress}"/>
-                            <Button Text="Usuń" Clicked="btnDelete"/>
+                            <Button Text="Usuń" Clicked="btnDelete" CommandParameter="{Binding .}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -26,9 +26,9 @@ namespace bazaOsoby
 
         private void btnEdit(object sender, EventArgs e)
         {
-            string adressRegex = @"^[0-9]{2}-[0-9]{3}";
+            string adressRegex = @"\b[0-9]{2}-[0-9]{3}\b";
 
-            if(!string.IsNullOrEmpty(entryName.Text) && !string.IsNullOrEmpty(entrySurname.Text) && !string.IsNullOrEmpty(entryMail.Text) && !string.IsNullOrEmpty(entryAdres.Text))
+            if (!string.IsNullOrEmpty(entryName.Text) && !string.IsNullOrEmpty(entrySurname.Text) && !string.IsNullOrEmpty(entryMail.Text) && !string.IsNullOrEmpty(entryAdres.Text))
             {
                 if(Regex.IsMatch(entryAdres.Text, adressRegex))
                 {

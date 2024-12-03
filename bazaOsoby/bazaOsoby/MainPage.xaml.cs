@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using SQLite;
+using System.Text.RegularExpressions;
 
 namespace bazaOsoby
 {
@@ -28,24 +29,33 @@ namespace bazaOsoby
 
         private async void btnDodaj(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(entryName.Text) && !string.IsNullOrEmpty(entrySurname.Text) && !string.IsNullOrEmpty(entryMail.Text) && !string.IsNullOrEmpty(entryAdres.Text))
+            string adressRegex = @"\b[0-9]{2}-[0-9]{3}\b";
+
+            if (!string.IsNullOrEmpty(entryName.Text) && !string.IsNullOrEmpty(entrySurname.Text) && !string.IsNullOrEmpty(entryMail.Text) && !string.IsNullOrEmpty(entryAdres.Text))
             {
-                await App.Database.InsertPersonAsync(new Person
+                if(Regex.IsMatch(entryAdres.Text, adressRegex))
                 {
-                    Name = entryName.Text,
-                    Surname = entrySurname.Text,
-                    Mail = entryMail.Text,
-                    Adress = entryAdres.Text
-                });
+                    await App.Database.InsertPersonAsync(new Person
+                    {
+                        Name = entryName.Text,
+                        Surname = entrySurname.Text,
+                        Mail = entryMail.Text,
+                        Adress = entryAdres.Text
+                    });
 
-                entryName.Text = string.Empty;
-                entrySurname.Text = string.Empty;
-                entryMail.Text = string.Empty;
-                entryAdres.Text = string.Empty;
+                    entryName.Text = string.Empty;
+                    entrySurname.Text = string.Empty;
+                    entryMail.Text = string.Empty;
+                    entryAdres.Text = string.Empty;
 
-                persons = await App.Database.GetAllPersonsAsync();
+                    persons = await App.Database.GetAllPersonsAsync();
 
-                ListaKontaktow.ItemsSource = persons;
+                    ListaKontaktow.ItemsSource = persons;
+                }
+                else
+                {
+                    DisplayAlert("Błąd", "Podaj poprawne dane", "OK?");
+                }
             }
         }
 
