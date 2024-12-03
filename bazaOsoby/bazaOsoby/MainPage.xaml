@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bazaOsoby.MainPage">
+    <StackLayout>
+        <Entry x:Name="entryName" Placeholder="Imie"></Entry>
+        <Entry x:Name="entrySurname" Placeholder="Nazwisko"></Entry>
+        <Entry x:Name="entryMail" Placeholder="Email"></Entry>
+        <Entry x:Name="entryAdres" Placeholder="Adress zamieszkania"></Entry>
+
+        <Button Text="Dodaj kontakt" Clicked="btnDodaj"/>
+
+        <ListView x:Name="ListaKontaktow">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="vcEdit">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Surname}"/>
+                            </StackLayout>
+                            <Label Text="{Binding Mail}"/>
+                            <Label Text="{Binding Adress}"/>
+                            <Button Text="Usuń" Clicked="btnDelete"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+
+</ContentPage>
